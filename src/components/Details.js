@@ -3,15 +3,14 @@ import styled, {keyframes} from 'styled-components'
 
 
 
-export default function Details({ character, action}) {
-    return (
-      <div>
-        {/* <button onClick={() => action(character.id)}> See Details</button> */}
-        {character.name}
-        <button onClick={() => action(character.name)}>
-          See details right here: 
-        </button>
-      </div>
-    )
-  }
+// export default function Details({ character, action}) {
+//     return (
+//       <div>
+//         {character.name}
+//         <button onClick={() => action(character.name)}>
+//           See details right here: 
+//         </button>
+//       </div>
+//     )
+//   }
   

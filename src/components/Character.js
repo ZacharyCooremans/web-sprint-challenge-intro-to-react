@@ -1,51 +1,72 @@
 // Write your Character component here
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+import theme from '../theme/theme'
 
 const MainDiv = styled.div`
+  text-align: center;
+  align-items:center;
+  margin-top:1%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 2px solid black;
+
+  /* &:hover{
+      color: ${prop => prop.theme.firstColor};
+      background-color: 'yellow';
+  } */
+
+`
+const MainP = styled.p`
     color: white;
     text-align:center;
-    border: 1px solid black;
-
 `
 
 
- const Character = props => {
-//     const {character, action} = props;
-    //console.log('This is character', details)
-    const { characterId, close} = props
-    const {details, setDetails} = useState(null)
+ //const Character = props => {
+    // const { characterName, close} = props
+    // const {details, setDetails} = useState(null)
+    // console.log('THIS IS NAME', characterName)
 
-    useEffect(() => {
-        axios
-          .get(`https://swapi.dev/api/${characterId}`)
-          //.get(("https://swapi.dev/api/people/"))
-          .then((res) => {
-              console.log(res) 
-              setDetails(res.data) 
-            })
-          .catch((err) => {
-               console.log(err)
-             }) // eslint-disable-line
-      }, [characterId])
+    // useEffect(() => {
+    //     axios
+    //       .get(`https://swapi.dev/api/people/${characterName}`)
+
+    //       .then((res) => {
+    //           console.log(res) 
+    //           setDetails(res.data) 
+    //         })
+    //       .catch((err) => {
+    //            console.log(err)
+    //          }) 
+    //   }, [characterName])
+
+    export default function Character({character}) {
 
     return (
-        <div className='container'>
-            <h2>Details: </h2>
-            {
-                details &&
-                <>
-                    <p>{details.name}</p>
-                    <p>{details.mass}</p>
-                    <ul>
-                        {details.films.map((film, idx) => <li key={idx}>{film}</li>)}
-                    </ul>
-                </>
-            }
-            <button onClick={close}>Close</button>
-        </div>
+        <MainDiv>
+            <MainP>Name: {character.name}</MainP>
+            <MainP>Weight: {character.mass}</MainP>
+            <MainP>Gender: {character.gender}</MainP>
+            <MainP>Date of Birth: {character.birth_year}</MainP>
+        </MainDiv>
     )
+        // <MainDiv className='container'>
+        //     <h2>Details: of {characterName}</h2>
+        //     {
+        //         details &&
+        //         <>
+        //             <MainP>{details.name}</MainP>
+        //             <MainP>{details.mass}</MainP>
+        //             <ul>
+        //                 {details.films.map((film, idx) => <li key={idx}>{film}</li>)}
+        //             </ul>
+        //         </>
+        //     }
+        //     <button onClick={close}>Close</button>
+        //</MainDiv>
+    //)
 }
 
 
@@ -63,4 +84,4 @@ const MainDiv = styled.div`
 //         </div>
 //     )
 // }
-export default Character
+//export default Character
